@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+<title>YouTube-Player</title>
+
+<style type="text/css">
+body {background: #000;
+margin: 0;
+padding: 0;
+text-align: center;}
+iframe {display: inline-block;
+iframeborder: 0;
+border: 4px solid dodgerblue;
+border-radius: 10px;}
+.center {position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+padding: 1rem 1.5rem;
+width: 90%;}
+</style>
+
+</head>
+<body>
+
+<!-- Set parameter - Example below -->
+<!-- https://www.youtube.com/embed/VideoID?enablejsapi=1&amp;mode=opaquerel=0&autoplay=1&controls=1&playsinline=1&loop=1&amp;modestbranding=1&amp;showinfo=0&amp;rel=1&amp;autohide=1&amp;wmode=transparent -->
+
+<div class="center"> 
+<iframe id="iframe" width="100%" height="0 auto"
+src="https://www.youtube.com/embed/VideoID">
+</iframe>
+</div>
+
+<script>
+var tag = document.createElement('script');
+tag.id = 'iframe';
+tag.src = 'https://www.youtube.com/iframe_api';
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+function onYouTubeIframeAPIReady() {
+player = new YT.Player('iframe', {
+events: {
+'onReady': onPlayerReady,
+'onStateChange': onPlayerStateChange
+}
+});
+} 
+
+// Change border color (Play-Pause-Buffering-Unstarted-Ended-Video cued).
+function onPlayerReady(event) {
+document.getElementById('iframe').style.borderColor = '#FF6D00';
+}
+function changeBorderColor(playerStatus) {
+var color;
+if (playerStatus == -1) {
+color = "#37474F"; // unstarted = gray
+} else if (playerStatus == 0) {
+color = "#FFFF00"; // ended = yellow
+} else if (playerStatus == 1) {
+color = "#33691E"; // playing = green
+} else if (playerStatus == 2) {
+color = "#DD2C00"; // paused = red
+} else if (playerStatus == 3) {
+color = "#AA00FF"; // buffering = purple
+} else if (playerStatus == 5) {
+color = "#FF6DOO"; // video cued = orange
+}
+if (color) {
+document.getElementById('iframe').style.borderColor = color;
+}
+}
+function onPlayerStateChange(event) {
+changeBorderColor(event.data);
+}
+
+// Set volume to '100' when screen changes to (1020px).
+function onPlayerReady(event) {
+  event.target.setVolume(100);
+  event.target.playVideo();
+}
+</script>
+
+</body>
+</html>
