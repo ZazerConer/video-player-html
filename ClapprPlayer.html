@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"></script>
+<script type="text/javascript" src="http://cdn.clappr.io/latest/clappr.min.js"></script>
+<title>Clappr-Player</title>
+
+<style>
+body {background: #000;
+margin: 0;
+padding: 0;
+width: 100%;
+height: 100%;
+align-items: center;
+text-align: center;}
+.center {position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 100%}
+</style>
+
+</head>
+<body>
+
+<div class="center"> 
+<div id="player" title="Video-Name">
+</div>
+</div>
+
+<script>
+var player = new Clappr.Player({
+source: "Video.mp4/m3u8", 
+poster: "Image.png", 
+width: "100%",
+parentId: "#player",
+playInline: true,
+fullscreen: true,
+exitFullscreenOnEnd: false,
+});
+</script>
+
+<!-- Player Events -->
+<!-- https://clappr.github.io/files/src_base_events.js -->
+
+<!-- Pip Plugin -->
+<!-- https://github.com/tjenkinson/clappr-pip-plugin/blob/master/src/index.js -->
+
+<!-- Queue Plugin -->
+<!-- https://www.npmjs.com/package/clappr-queue-plugin -->
+
+<!-- Demo Player -->
+<!-- http://clappr.io/demo/index.plainhtml5.html -->
+
+</body>
+</html>
