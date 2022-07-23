@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facebook-Video-Player</title>
+
+<style>
+*{margin: 0;
+padding: 0;
+box-sizing: border-box;}
+body {background: #000;
+height: 100vh;
+display: grid;
+align-items: center;
+text-align: center;}
+.fb-video {display: absolute;
+max-width: 600px;
+height: auto;}
+</style>
+
+<script>
+window.fbAsyncInit = function() {
+FB.init({
+xfbml : true,
+version : 'v14.1'
+});
+}; (function(d, s, id){
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) {return;}
+js = d.createElement(s); js.id = id;
+js.src = "https://connect.facebook.net/en_US/sdk.js";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+</head>
+<body>
+
+<!-- Put the video ID from facebook -->
+<!-- Example > https://www.facebook.com/video.php?v=7957030617079063 -->
+
+<div  
+data-href="https://www.facebook.com/video.php?v=VideoID" 
+data-allowfullscreen="true"
+data-autoplay="true"
+data-show-captions="true">
+</div>
+
+<!-- This is the default player -->
+<!-- You can customize this player according to your style -->
+
+</body>
+</html>
