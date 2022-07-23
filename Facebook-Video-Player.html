@@ -15,8 +15,8 @@ height: 100vh;
 display: grid;
 align-items: center;
 text-align: center;}
-.fb-video {display: absolute;
-max-width: 600px;
+.fb-video {position: relative;
+max-width: 500px;
 height: auto;}
 </style>
 
@@ -41,11 +41,14 @@ fjs.parentNode.insertBefore(js, fjs);
 <!-- Put the video ID from facebook -->
 <!-- Example > https://www.facebook.com/video.php?v=7957030617079063 -->
 
-<div  
-data-href="https://www.facebook.com/video.php?v=VideoID" 
+<div class="fb-video"
+data-href="https://www.facebook.com/video.php?v=VideoID"
 data-allowfullscreen="true"
-data-autoplay="true"
-data-show-captions="true">
+data-autoplay="false"
+data-width="auto"
+data-show-text="false"
+data-show-captions="true"
+data-lazy="true">
 </div>
 
 <!-- This is the default player -->
